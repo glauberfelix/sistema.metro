@@ -81,7 +81,7 @@ public class Sistema extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(150, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(142, 142, 142))
             .addGroup(layout.createSequentialGroup()
@@ -97,9 +97,9 @@ public class Sistema extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(estDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Resultado)
                         .addGap(18, 18, 18)
@@ -155,11 +155,12 @@ public class Sistema extends javax.swing.JFrame {
         // Tabela da distância entre as estações vizinhas
         // Onde -1 indica que não há adjacência com aquela estação
         double distE[][] = {{-1,10,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-            {10,-1,8.5,-1,-1,-1,-1,-1,10.3,3.5,-1,-1,-1,-1},{-1,8.5,-1,6.3,-1,-1,-1,-1,9.4,-1,-1,-1,-1,18.7},
+            {10,-1,8.5,-1,-1,-1,-1,-1,10.3,3.5,-1,-1,-1,-1},{-1,8.5,-1,6.3,-1,-1,-1,-1,9.4,-1,-1,-1,18.7,-1},
             {-1,-1,6.3,-1,13,-1,-1,15.3,-1,-1,-1,-1,12.8,-1},{-1,-1,-1,13,-1,3,2.4,30,-1,-1,-1,-1,-1,-1},
             {-1,-1,-1,-1,3,-1,-1,-1,-1,-1,-1,-1,-1,-1},{-1,-1,-1,-1,2.4,-1,-1,-1,-1,-1,-1,-1,-1,-1},
             {-1,-1,-1,15.3,30,-1,-1,-1,9.6,-1,-1,6.4,-1,-1},{-1,10,9.4,-1,-1,-1,-1,9.6,-1,-1,12.2,-1,-1,-1},
             {-1,3.5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1,-1,-1,-1,12.2,-1,-1,-1,-1,-1},
+            {-1,-1,-1,-1,-1,-1,-1,6.4,-1,-1,-1,-1,-1,-1},
             {-1,-1,18.7,12.8,-1,-1,-1,-1,-1,-1,-1,-1,-1,5.1},{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5.1,-1}};
         
         double menor=0;
@@ -171,7 +172,11 @@ public class Sistema extends javax.swing.JFrame {
     int destino = Integer.parseInt((String)estDestino.getSelectedItem()); 
     int l = destino;
     
-    System.out.println(origem);
+
+    
+    
+    String resposta = String.valueOf(origem);
+
     
     do{
         
@@ -180,7 +185,7 @@ public class Sistema extends javax.swing.JFrame {
         if(distE[origem - 1][i] != -1){
             
             double custoTotal = distE[origem - 1][i] + distLR[i][destino-1];
-            //System.out.println(custoTotal);
+            //System.out.println(custoTotal);;
             
             if(k==0){
                 menor = custoTotal;
@@ -197,13 +202,16 @@ public class Sistema extends javax.swing.JFrame {
     }
     
         origem = ++l;
-        System.out.println(l);
+        //System.out.println(l);
+        
+        resposta = resposta + "->" + l;
         
            
     }while(l!=destino);
     
- 
     
+    
+    resultado.setText(resposta);
     
     }//GEN-LAST:event_BuscarActionPerformed
 

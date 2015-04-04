@@ -164,17 +164,14 @@ public class Sistema extends javax.swing.JFrame {
             {-1,-1,18.7,12.8,-1,-1,-1,-1,-1,-1,-1,-1,-1,5.1},{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5.1,-1}};
         
         double menor=0;
-        int k=0,j=0;
+        int k=0,l=0;
         
         
         
     int origem = Integer.parseInt((String)estOrigem.getSelectedItem());
     int destino = Integer.parseInt((String)estDestino.getSelectedItem()); 
-    int l = destino;
     
-
-    
-    
+  
     String resposta = String.valueOf(origem);
 
     
@@ -201,16 +198,12 @@ public class Sistema extends javax.swing.JFrame {
         }
     }
     
-        origem = ++l;
-        //System.out.println(l);
-        
+        origem = ++l;      
         resposta = resposta + "->" + l;
-        
+        k=0;
            
     }while(l!=destino);
-    
-    
-    
+     
     resultado.setText(resposta);
     
     }//GEN-LAST:event_BuscarActionPerformed
